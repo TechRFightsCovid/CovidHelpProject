@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout">
+
+    <include
+        layout="@layout/app_bar_main"
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?attr/actionBarSize"
+                android:padding="15dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categories"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="50dp"
+                    android:textSize="24sp"
+                    android:id="@+id/catTV"/>
+
+                <GridView
+                    android:layout_width="match_parent"
+                    android:layout_height="1000dp"
+                    android:id="@+id/catGV"
+                    android:layout_below="@id/catTV"
+                    android:numColumns="2"
+                    android:columnWidth="150dp"
+                    android:verticalSpacing="10dp"
+                    android:horizontalSpacing="10dp"
+                    android:padding="10dp"
+                    />
+            </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/nav_menu"
+        app:headerLayout="@layout/nav_header"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

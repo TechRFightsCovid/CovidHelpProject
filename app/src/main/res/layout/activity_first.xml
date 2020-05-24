@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/welcomeTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome To LoKi"
+        android:layout_marginTop="75dp"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/exploreTV"
+        android:layout_below="@id/welcomeTV"
+        android:text="Your Local Kirana"
+        android:layout_marginTop="50dp"
+        android:textSize="24sp"
+        android:textAlignment="center"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:id="@+id/firstIV"
+        android:src="@drawable/img_first"
+        android:layout_below="@+id/exploreTV"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginActBtn"
+        android:layout_below="@id/firstIV"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/primary_btn_bg"
+        android:textColor="@color/white"
+        android:text="@string/log_in"
+        android:layout_marginTop="15dp"
+        android:textSize="24sp"/>
+
+    <Button
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/signupActBtn"
+        android:layout_below="@id/loginActBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:text="@string/signup"
+        android:textSize="24sp"/>
+
+
+
+</RelativeLayout>
