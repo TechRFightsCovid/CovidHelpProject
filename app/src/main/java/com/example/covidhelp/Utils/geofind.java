@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.covidhelp.HomeActivity;
+import com.example.covidhelp.CustomerHomeActivity;
 import com.example.covidhelp.R;
 import com.example.covidhelp.UserInfo;
 import com.google.firebase.database.DatabaseReference;
@@ -34,67 +34,68 @@ import androidx.core.app.ActivityCompat;
 
 public class geofind extends AppCompatActivity {
 
-    private Button b,yesbtn;
-    private TextView t,txt;
+    private Button b, yesbtn;
+    private TextView t, txt;
     private LocationManager locationManager;
     private LocationListener listener;
     Geocoder geocoder;
     ProgressBar progressBar;
     List<Address> addresses;
-    Double latitude=18.944620;
-    Double longitude=72.822278;
+    Double latitude = 18.944620;
+    Double longitude = 72.822278;
     DatabaseReference reference;
-    private long s_id=0;
+    private long s_id = 0;
     UserInfo userInfo;
     int post;
-    String city,postal,area,country;
-    TextView shopnm,phone;
+    String city, postal, area, country;
+    TextView shopnm, phone;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.find_society);
-        progressBar=findViewById(R.id.progress);
+        progressBar = findViewById(R.id.progress);
         t = (TextView) findViewById(R.id.textView);
         b = (Button) findViewById(R.id.button);
-       // shopnm=findViewById(R.id.fullName);
-       // phone=findViewById(R.id.phone);
-        txt=findViewById(R.id.txt);
-        yesbtn=findViewById(R.id.yesbtn);
-        reference= FirebaseDatabase.getInstance().getReference().child("UserInfo");
-        userInfo=new UserInfo();
+        // shopnm=findViewById(R.id.fullName);
+        // phone=findViewById(R.id.phone);
+        txt = findViewById(R.id.txt);
+        yesbtn = findViewById(R.id.yesbtn);
+        reference = FirebaseDatabase.getInstance().getReference().child("UserInfo");
+        userInfo = new UserInfo();
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        geocoder=new Geocoder(this, Locale.getDefault());
+        geocoder = new Geocoder(this, Locale.getDefault());
 
         listener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
                 progressBar.setVisibility(View.GONE);
                 t.append("\n " + location.getLongitude() + " " + location.getLatitude());
-                latitude=location.getLatitude();
-                longitude=location.getLongitude();
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
                 try {
-                    addresses=geocoder.getFromLocation(latitude,longitude,1);
-                    String address=addresses.get(0).getAddressLine(0);
-                     area=addresses.get(0).getLocality();
-                     city=addresses.get(0).getAdminArea();
-                     country=addresses.get(0).getCountryName();
-                     postal=addresses.get(0).getPostalCode();
+                    addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                    String address = addresses.get(0).getAddressLine(0);
+                    area = addresses.get(0).getLocality();
+                    city = addresses.get(0).getAdminArea();
+                    country = addresses.get(0).getCountryName();
+                    postal = addresses.get(0).getPostalCode();
 
-                    String fulladd=address+", "+area+", "+city+", "+country+", "+postal;
+                    String fulladd = address + ", " + area + ", " + city + ", " + country + ", " + postal;
                     txt.setText(fulladd);
 
                     yesbtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent=new Intent(geofind.this, HomeActivity.class);
-                             userInfo.setLatitude(latitude);
+                            Intent intent = new Intent(geofind.this, CustomerHomeActivity.class);
+                            userInfo.setLatitude(latitude);
                             userInfo.setLogitude(longitude);
-                           // shopnm.getText().toString();
-                          //  userInfo.setShopnm(shopnm.getText().toString().trim());
-                           // long no= (long) Integer.parseInt(String.valueOf(phone));
-                           //  userInfo.setPhone(no);
-                          //  reference.child(String.valueOf(s_id+1)).setValue(s_add);
+                            // shopnm.getText().toString();
+                            //  userInfo.setShopnm(shopnm.getText().toString().trim());
+                            // long no= (long) Integer.parseInt(String.valueOf(phone));
+                            //  userInfo.setPhone(no);
+                            //  reference.child(String.valueOf(s_id+1)).setValue(s_add);
                             reference.push().setValue(userInfo);
                             startActivity(intent);
                         }
@@ -154,6 +155,18 @@ public class geofind extends AppCompatActivity {
             public void onClick(View view) {
                 //noinspection MissingPermission
                 progressBar.setVisibility(View.VISIBLE);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    Activity#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for Activity#requestPermissions for more details.
+                        return;
+                    }
+                }
                 locationManager.requestLocationUpdates("gps", 5000, 0, listener);
             }
         });

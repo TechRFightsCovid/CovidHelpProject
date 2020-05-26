@@ -9,6 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.example.covidhelp.Auth.Getuser;
+
 public class Splash5 extends AppCompatActivity {
     private ImageView splashicon;
     private static int splashtimeout=2500;
@@ -22,7 +24,7 @@ public class Splash5 extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Splash5.this,Getuser.class);
+                Intent intent = new Intent(Splash5.this, Getuser.class);
                 startActivity(intent);
                 finish();
             }

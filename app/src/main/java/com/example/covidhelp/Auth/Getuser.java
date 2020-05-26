@@ -1,11 +1,9 @@
-package com.example.covidhelp;
+package com.example.covidhelp.Auth;
 
 import android.app.Activity;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +11,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.covidhelp.FirstActivity;
+import com.example.covidhelp.R;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;

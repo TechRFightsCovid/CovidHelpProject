@@ -8,6 +8,8 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.covidhelp.Auth.LoginActivity;
+
 public class FirstActivity extends AppCompatActivity {
 
     private Button loginBtn;

@@ -8,9 +8,9 @@
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/filter"
-        android:title="@string/filter"
-        android:icon="@drawable/ic_filter_list_black_24dp"
+        android:id="@+id/cart"
+        android:title="@string/Cart"
+        android:icon="@drawable/ic_shopping_cart_black_24dp"
         app:showAsAction="always"/>
 
 

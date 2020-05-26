@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.example.covidhelp.Auth.LoginActivity;
+import com.example.covidhelp.DataModels.Category;
 import com.example.covidhelp.Utils.categoryAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 
-public class HomeActivity extends AppCompatActivity {
+public class CustomerHomeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser mCurrentUser;
 
@@ -63,33 +65,48 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void inflateGV() {
-        final String[] categories = {
-                "Staples",
-                "Vegetables & Fruits",
-                "Personal Care",
-                "Snacks",
-                "Household",
-                "Kitchen",
-                "Beverages",
-                "Dairy",
-                "Instant Food",
-                "Baby Care",
-                "Pet Care"
-        };
+//        final String[] category = {
+//                "Staples",
+//                "Vegetables & Fruits",
+//                "Personal Care",
+//                "Snacks",
+//                "Household",
+//                "Kitchen",
+//                "Beverages",
+//                "Dairy",
+//                "Instant Food",
+//                "Baby Care",
+//                "Pet Care"
+//        };
+//
+//        final int[] catImages = {
+//                R.drawable.staples,
+//                R.drawable.staples,
+//                R.drawable.staples,
+//                R.drawable.staples,
+//                R.drawable.staples,
+//                R.drawable.staples,
+//                R.drawable.staples,
+//                R.drawable.staples,
+//                R.drawable.staples,
+//                R.drawable.staples,
+//                R.drawable.staples
+//        };
 
-        ArrayList list = new ArrayList();
-        for(String category: categories){
-            list.add(category);
-        }
-        categoryAdapter categoryAdapter = new categoryAdapter(this, list);
-        categoryGV.setAdapter(categoryAdapter);
-
-        categoryGV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(HomeActivity.this, categories[i], Toast.LENGTH_SHORT).show();
-            }
-        });
+//        ArrayList<Category> listCat = new ArrayList();
+//        for(int i = 0; i < category.length; i++){
+//            Category c = new Category(category[i], catImages[i]);
+//            listCat.add(c);
+//        }
+//        categoryAdapter categoryAdapter = new categoryAdapter(this, listCat);
+//        categoryGV.setAdapter(categoryAdapter);
+//
+//        categoryGV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Toast.makeText(CustomerHomeActivity.this, category[i], Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
     }
 
@@ -128,8 +145,10 @@ public class HomeActivity extends AppCompatActivity {
         if (id == R.id.notif) {
             Toast.makeText(getApplicationContext(), "Notifications", Toast.LENGTH_SHORT).show();
             return true;
-        } else if (id == R.id.filter) {
-            Toast.makeText(getApplicationContext(), "Filters", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.cart) {
+            Toast.makeText(getApplicationContext(), "Cart", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, CartActivity.class);
+
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -162,7 +181,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void sendUserToLogin() {
-        Intent loginIntent = new Intent(HomeActivity.this, LoginActivity.class);
+        Intent loginIntent = new Intent(CustomerHomeActivity.this, LoginActivity.class);
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(loginIntent);
