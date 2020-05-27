@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.covidhelp.CustomerHomeActivity;
+import com.example.covidhelp.Customer.CustomerHomeActivity;
 import com.example.covidhelp.R;
 import com.example.covidhelp.UserInfo;
 import com.google.firebase.database.DatabaseReference;

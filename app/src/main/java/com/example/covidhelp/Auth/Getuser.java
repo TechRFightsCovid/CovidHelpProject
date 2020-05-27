@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.covidhelp.FirstActivity;
 import com.example.covidhelp.R;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -56,7 +55,7 @@ public class Getuser extends Activity implements AdapterView.OnItemSelectedListe
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Getuser.this, FirstActivity.class);
+                Intent intent= new Intent(Getuser.this, LoginActivity.class);
                 intent.putExtra("data",String.valueOf(spinner.getSelectedItem()));
                 startActivity(intent);
             }

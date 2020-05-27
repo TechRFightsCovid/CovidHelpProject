@@ -1,4 +1,4 @@
-package com.example.covidhelp;
+package com.example.covidhelp.Auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.covidhelp.Auth.LoginActivity;
+import com.example.covidhelp.R;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -30,7 +30,7 @@ public class FirstActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FirstActivity.this, LoginActivity.class);
+                Intent intent = new Intent(FirstActivity.this, Getuser.class);
                 startActivity(intent);
             }
         });
