@@ -22,17 +22,17 @@
 
 
         <activity
-            android:name=".SplashScreen">
+            android:name=".Onboarding.SplashScreen">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
 
 
-        <activity android:name=".CartActivity" />
+        <activity android:name=".Customer.CartActivity" />
 
 
         <activity android:name=".Auth.Signup" />
@@ -50,12 +50,12 @@
         <activity
             android:name=".Customer.CustomerHomeActivity">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
 
 

@@ -12,7 +12,6 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.covidhelp.Auth.LoginActivity;
-import com.example.covidhelp.CartActivity;
 import com.example.covidhelp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -146,7 +145,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
         } else if (id == R.id.cart) {
             Toast.makeText(getApplicationContext(), "Cart", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CartActivity.class);
-
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

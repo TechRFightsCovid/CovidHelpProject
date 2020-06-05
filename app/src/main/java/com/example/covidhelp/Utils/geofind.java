@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.example.covidhelp.Customer.CustomerHomeActivity;
 import com.example.covidhelp.R;
-import com.example.covidhelp.UserInfo;
+import com.example.covidhelp.DataModels.UserInfo;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

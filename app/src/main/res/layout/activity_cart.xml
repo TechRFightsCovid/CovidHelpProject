@@ -4,15 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CartActivity">
+    tools:context=".Customer.CartActivity"
+    android:padding="15dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/cart_heading"
         android:text="@string/cart"
+        android:textSize="36dp"
+        android:fontFamily="@font/fredoka_one"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:id="@+id/checkoutList"
+        android:layout_below="@id/cart_heading"
+        app:layout_constraintTop_toBottomOf="@id/cart_heading"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkoutList"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@drawable/primary_btn_bg"
+        android:text="CHECKOUT"
+        android:textColor="@color/white"
+        android:fontFamily="@font/fredoka_one"
+        android:textSize="24sp"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,36 +20,59 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
-            android:text="I am a"
-            android:textStyle="normal"
-            android:textSize="40dp"
-            android:textColor="@color/colorPrimaryDark"
             android:layout_marginBottom="25dp"
-            />
+            android:fontFamily="@font/fredoka_one"
+            android:text="I am a"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="40dp"
+            android:textStyle="normal" />
 
         <!-- Spinner Element -->
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="fill_parent"
+        <RadioGroup
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:prompt="@string/select_ur_ty"
-            android:textSize="16sp"
-            android:fontFamily="@font/open_sans_semibold"
-            />
+            android:id="@+id/customer_shopkeeper">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:button="@drawable/ic_store_black_24dp"
+                android:text="Customer"
+                android:paddingLeft="30dp"
+                android:textSize="24dp"
+                android:fontFamily="@font/fredoka_one"
+                android:id="@+id/customer_radio_btn"
+                android:background="@drawable/radio_bg_customer"/>
+
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:button="@drawable/ic_store_black_24dp"
+                android:text="Shopkeeper"
+                android:id="@+id/shopkeeper_radio_btn"
+                android:paddingLeft="30dp"
+                android:textSize="24dp"
+                android:fontFamily="@font/fredoka_one"
+                android:background="@drawable/radio_bg_shopkeeper"/>
+        </RadioGroup>
     </LinearLayout>
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NEXT"
-        android:id="@+id/button"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="137dp"
-        android:textSize="16sp"
         android:background="@drawable/primary_btn_bg"
+        android:fontFamily="@font/fredoka_one"
+        android:text="NEXT"
         android:textColor="@android:color/background_light"
-        android:fontFamily="@font/open_sans_semibold"
+        android:textSize="16sp"
+
         />
 
 

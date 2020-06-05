@@ -1,4 +1,4 @@
-package com.example.covidhelp;
+package com.example.covidhelp.DataModels;
 
 public class UserInfo {
 

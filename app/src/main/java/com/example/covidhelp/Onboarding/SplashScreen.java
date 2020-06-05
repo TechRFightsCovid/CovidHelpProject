@@ -1,15 +1,12 @@
-package com.example.covidhelp;
+package com.example.covidhelp.Onboarding;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 
-import com.example.covidhelp.Onboarding.Onboarding;
+import com.example.covidhelp.R;
 
 public class SplashScreen extends AppCompatActivity {
     private static int splashtimeout=2500;
