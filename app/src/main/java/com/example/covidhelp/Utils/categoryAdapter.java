@@ -23,11 +23,11 @@ public class categoryAdapter extends BaseAdapter {
     Context context;
 
     @NonNull
-    ArrayList<Category> categories;
+    Category[] categories;
 
     LayoutInflater inflater;
 
-    public categoryAdapter(Context context, @NonNull ArrayList<Category> categories) {
+    public categoryAdapter(Context context, @NonNull Category[] categories) {
         this.context = context;
         this.categories = categories;
         inflater = LayoutInflater.from(context);
@@ -35,12 +35,12 @@ public class categoryAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return categories.length;
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return categories[i];
     }
 
     @Override
@@ -61,11 +61,9 @@ public class categoryAdapter extends BaseAdapter {
         TextView textViewItemName = (TextView)
                 convertView.findViewById(R.id.categoryInnerTV);
 
-        ImageView imageViewItemName = (ImageView) convertView.findViewById(R.id.categoryInnerIV);
 
         //sets the text for item name and item description from the current item object
-        textViewItemName.setText(categories.get(position).getCategory());
-        imageViewItemName.setImageResource(categories.get(position).getImg());
+        textViewItemName.setText(categories[position].getCategory());
 
 
         // returns the view for the current row
