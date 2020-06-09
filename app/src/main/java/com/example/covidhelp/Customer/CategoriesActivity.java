@@ -12,8 +12,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.covidhelp.DataModels.Category;
 import com.example.covidhelp.R;
@@ -36,7 +39,7 @@ public class CategoriesActivity extends AppCompatActivity {
     }
 
     private void setupGV() {
-        Category[] categories = {
+        final Category[] categories = {
                 new Category("Grocery & Staples"),
                 new Category("Vegetables & Fruits"),
                 new Category("Personal Care"),
@@ -50,6 +53,12 @@ public class CategoriesActivity extends AppCompatActivity {
         };
         categoryAdapter categoryAdapter = new categoryAdapter(this, categories);
         categoryGV.setAdapter(categoryAdapter);
+        categoryGV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(mContext, categories[i].getCategory(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void setupWidgets(){
