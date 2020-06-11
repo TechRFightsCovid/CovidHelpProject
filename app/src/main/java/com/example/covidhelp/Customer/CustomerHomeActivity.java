@@ -4,15 +4,21 @@ import android.content.Intent;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.covidhelp.Auth.LoginActivity;
+import com.example.covidhelp.DataModels.Shop;
 import com.example.covidhelp.R;
+import com.example.covidhelp.Utils.ShopAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -23,7 +29,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -35,7 +44,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
-    private GridView categoryGV;
+    private RecyclerView shopRV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,55 +64,26 @@ public class CustomerHomeActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
-        categoryGV = (GridView) findViewById(R.id.catGV);
+        shopRV = (RecyclerView) findViewById(R.id.shopsRV);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        inflateGV();
+        inflateRV();
     }
 
-    private void inflateGV() {
-//        final String[] category = {
-//                "Staples",
-//                "Vegetables & Fruits",
-//                "Personal Care",
-//                "Snacks",
-//                "Household",
-//                "Kitchen",
-//                "Beverages",
-//                "Dairy",
-//                "Instant Food",
-//                "Baby Care",
-//                "Pet Care"
-//        };
-//
-//        final int[] catImages = {
-//                R.drawable.staples,
-//                R.drawable.staples,
-//                R.drawable.staples,
-//                R.drawable.staples,
-//                R.drawable.staples,
-//                R.drawable.staples,
-//                R.drawable.staples,
-//                R.drawable.staples,
-//                R.drawable.staples,
-//                R.drawable.staples,
-//                R.drawable.staples
-//        };
+    private void inflateRV() {
+        final Shop[] listShops = {
+                new Shop("Shop 1", "Address 1", 5, 0),
+                new Shop("Shop 2", "Address 2", 5, 0),
+                new Shop("Shop 3", "Address 3", 5, 0),
+                new Shop("Shop 4", "Address 4", 5, 0)
+        };
 
-//        ArrayList<Category> listCat = new ArrayList();
-//        for(int i = 0; i < category.length; i++){
-//            Category c = new Category(category[i], catImages[i]);
-//            listCat.add(c);
-//        }
-//        categoryAdapter categoryAdapter = new categoryAdapter(this, listCat);
-//        categoryGV.setAdapter(categoryAdapter);
-//
-//        categoryGV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Toast.makeText(CustomerHomeActivity.this, category[i], Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        ShopAdapter shopAdapter = new ShopAdapter(listShops, this);
+        shopRV.setAdapter(shopAdapter);
+
+
+
+
 
     }
 

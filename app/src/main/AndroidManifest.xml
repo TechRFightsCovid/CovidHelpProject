@@ -17,62 +17,37 @@
         android:roundIcon="@drawable/loki_logo_1_nt"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-
-        <activity android:name=".Onboarding.Onboarding"
-            android:theme="@style/MyMaterialTheme">
-
-        </activity>
-
-
+        <activity android:name=".Customer.CategoriesActivity"></activity>
         <activity
-            android:name=".Onboarding.SplashScreen">
+            android:name=".Onboarding.Onboarding"
+            android:theme="@style/MyMaterialTheme"></activity>
+        <activity android:name=".Onboarding.SplashScreen">
 
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-
-
         <activity android:name=".Customer.CartActivity" />
-
-
         <activity android:name=".Auth.Signup" />
-
-
         <activity android:name=".Auth.Getuser" />
-
-
         <activity android:name=".Auth.LoginActivity" />
-
-
         <activity android:name=".MainActivity" />
+        <activity android:name=".Customer.CustomerHomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
-        <activity
-            android:name=".Customer.CustomerHomeActivity">
-
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
-
         <activity android:name=".Utils.geofind" />
-
-
         <activity android:name=".Auth.FirstActivity" />
-
 
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
-
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

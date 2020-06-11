@@ -16,35 +16,23 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shops"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:textSize="24sp"
+            android:id="@+id/shopTV"/>
 
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="?attr/actionBarSize"
-                android:padding="15dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/categories"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="50dp"
-                    android:textSize="24sp"
-                    android:id="@+id/catTV"/>
-
-                <GridView
-                    android:layout_width="match_parent"
-                    android:layout_height="1000dp"
-                    android:id="@+id/catGV"
-                    android:layout_below="@id/catTV"
-                    android:numColumns="2"
-                    android:columnWidth="150dp"
-                    android:verticalSpacing="10dp"
-                    android:horizontalSpacing="10dp"
-                    android:padding="10dp"
-                    />
-            </RelativeLayout>
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/shopTV"
+            android:id="@+id/shopsRV"
+            android:background="@color/colorPrimary"
+            android:scrollbars="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
     </RelativeLayout>
