@@ -1,26 +1,28 @@
 package com.example.covidhelp.Customer;
 
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 import com.example.covidhelp.DataModels.Items;
 import com.example.covidhelp.R;
-import com.example.covidhelp.Utils.checkoutAdapter;
+import com.example.covidhelp.Utils.itemsAdapter;
 import com.paytm.pgsdk.PaytmOrder;
 import com.paytm.pgsdk.PaytmPGService;
 import com.paytm.pgsdk.PaytmPaymentTransactionCallback;
+
 import java.util.HashMap;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import com.example.covidhelp.Utils.itemsAdapter;
 
 
 public class CartActivity extends AppCompatActivity implements PaytmPaymentTransactionCallback {
