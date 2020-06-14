@@ -1,5 +1,6 @@
 package com.example.covidhelp.Customer;
 
+import android.app.Activity;
 import android.content.Intent;
 
 import android.content.res.Configuration;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.covidhelp.Auth.LoginActivity;
 import com.example.covidhelp.DataModels.Shop;
+import com.example.covidhelp.LoKi;
 import com.example.covidhelp.R;
 import com.example.covidhelp.Utils.ShopAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +41,7 @@ import java.util.Objects;
 public class CustomerHomeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser mCurrentUser;
+    private LoKi loki;
 
     private Button mLogoutBtn;
 
@@ -50,6 +53,8 @@ public class CustomerHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        loki = (LoKi) this.getApplicationContext();
+
 
         setupWidgets();
         //initFirebase();
@@ -72,20 +77,18 @@ public class CustomerHomeActivity extends AppCompatActivity {
 
     private void inflateRV() {
         final Shop[] listShops = {
-                new Shop("Shop 1", "Address 1", 5, 0),
-                new Shop("Shop 2", "Address 2", 5, 0),
-                new Shop("Shop 3", "Address 3", 5, 0),
-                new Shop("Shop 4", "Address 4", 5, 0)
+                new Shop("Shop 1", "Address 1", 5, R.drawable.shops_stock),
+                new Shop("Shop 2", "Address 2", 5, R.drawable.animated_city_skyline),
+                new Shop("Shop 3", "Address 3", 5, R.drawable.shops_stock),
+                new Shop("Shop 4", "Address 4", 5, R.drawable.animated_city_skyline)
         };
 
         ShopAdapter shopAdapter = new ShopAdapter(listShops, this);
         shopRV.setAdapter(shopAdapter);
 
-
-
-
-
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -105,6 +108,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         toggle.syncState();
+        loki.setmCurrentActivity(this);
     }
 
     @Override
@@ -146,6 +150,19 @@ public class CustomerHomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        clearReferences();
+    }
+
+    private void clearReferences() {
+        Activity curr = loki.getmCurrentActivity();
+        if(this.equals(curr)){
+            loki.setmCurrentActivity(null);
+        }
     }
 
     @Override

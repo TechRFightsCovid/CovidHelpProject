@@ -31,4 +31,9 @@
     <string name="next">NEXT</string>
     <string name="forward">Continue</string>
     <string name="shops">Shops</string>
+    <string name="shops_near_you">Shops Near You</string>
+    <string name="orders_for_you">Orders For You</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

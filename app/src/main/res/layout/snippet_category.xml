@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:background="@drawable/category_bg"
-    android:padding="25dp"
-    android:layout_margin="10dp"
-    android:gravity="bottom">
-
-    <TextView
+    android:backgroundTint="@color/colorAccent"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="10dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/categoryInnerTV"
-        android:layout_centerHorizontal="true"
-        android:text="@string/category"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:layout_marginTop="15dp"
-        android:textSize="16sp" />
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:id="@+id/cat_bg">
+
+        <TextView
+            android:id="@+id/categoryInnerTV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/card_desc"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/raleway"
+            android:text="@string/category"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.covidhelp.DataModels.Category;
@@ -60,10 +62,14 @@ public class categoryAdapter extends BaseAdapter {
         // get the TextView for item name and item description
         TextView textViewItemName = (TextView)
                 convertView.findViewById(R.id.categoryInnerTV);
+        ConstraintLayout catBackground = (ConstraintLayout) convertView.findViewById(R.id.cat_bg);
+
 
 
         //sets the text for item name and item description from the current item object
         textViewItemName.setText(categories[position].getCategory());
+        catBackground.setBackground(context.getDrawable(categories[position].getCatThumbnail()));
+
 
 
         // returns the view for the current row

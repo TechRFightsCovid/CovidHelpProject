@@ -7,4 +7,5 @@
     <color name="lightGray">#F2F2F2</color>
     <color name="disabledBtnBg">#999999</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
 </resources>

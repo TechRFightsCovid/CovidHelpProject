@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
-import android.content.ClipData;
 import android.os.Bundle;
 
 import com.example.covidhelp.DataModels.Items;
 import com.example.covidhelp.R;
-import com.example.covidhelp.Utils.checkoutAdapter;
+import com.example.covidhelp.Utils.itemsAdapter;
 
 public class CartActivity extends AppCompatActivity {
 
@@ -31,7 +29,7 @@ public class CartActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         RecyclerView rv = (RecyclerView) findViewById(R.id.checkoutList);
         rv.setLayoutManager(layoutManager);
-        RecyclerView.Adapter adapter = new checkoutAdapter(items);
+        RecyclerView.Adapter adapter = new itemsAdapter(this, items);
         rv.setAdapter(adapter);
     }
 }

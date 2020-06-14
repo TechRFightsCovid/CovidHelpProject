@@ -7,26 +7,40 @@
     app:cardCornerRadius="15dp"
     android:layout_margin="5dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:id="@+id/item_bg">
         <TextView
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:id="@+id/item_name"
             android:text="Loading Item Name"
-            android:textSize="20sp" />
+            android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
             android:id="@+id/item_price"
-            android:textSize="20sp"
-            android:text="Price" />
+            android:textSize="24sp"
+            android:text="Price"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:id="@+id/item_check"
+        android:background="@drawable/ic_check_black_24dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:layout_gravity="end" />
+
 
 
 </androidx.cardview.widget.CardView>
