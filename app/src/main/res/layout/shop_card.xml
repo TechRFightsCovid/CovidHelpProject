@@ -9,43 +9,56 @@
     android:layout_margin="15dp"
     app:cardElevation="10dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:orientation="vertical"
-        android:paddingHorizontal="15dp">
-        <LinearLayout
+        android:id="@+id/card_shop_bg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
             android:orientation="vertical"
-            android:id="@+id/card_int_LL">
-            <TextView
+            android:paddingHorizontal="15dp"
+            android:background="@drawable/card_desc">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/s_name_TV"
-                android:text="Name Of Shop"
-                android:textSize="20sp"
-                android:fontFamily="@font/fredoka_one"/>
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="vertical"
+                android:id="@+id/card_int_LL">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/s_name_TV"
+                    android:text="Name Of Shop"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/fredoka_one"
+                    android:textColor="@color/black"
+                    android:transitionName="shared_shop_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/s_address_TV"
+                    android:text="Address Of Shop"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:transitionName="shared_shop_address"/>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/s_address_TV"
-                android:text="Address Of Shop"
-                android:textSize="16sp"/>
+                android:layout_height="30dp"
+                android:id="@+id/s_ratings_TV"
+                android:text="Rating"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textColor="@color/black"/>
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:id="@+id/s_ratings_TV"
-            android:text="Rating"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

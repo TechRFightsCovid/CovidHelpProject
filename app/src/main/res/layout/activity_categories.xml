@@ -13,47 +13,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp">
-        <LinearLayout
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        android:id="@+id/shop_LL"
+        android:transitionName="shop_layout">
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/cat_header_LL">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/shop_name_TV"
-                android:text="shop name"
-                android:textSize="36dp"
-                android:textAlignment="center"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Categories"
-                android:textAlignment="center"
+                android:transitionName="shared_shop_name"
+                android:fontFamily="@font/fredoka_one"
                 android:textSize="36sp"
-                android:layout_margin="25dp"
-                android:id="@+id/categories_tv"/>
-
-
-
-        </LinearLayout>
+                android:textAlignment="center"/>
+        </androidx.cardview.widget.CardView>
 
         <GridView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/cat_gv"
             android:layout_below="@id/cat_header_LL"
-            android:padding="15dp"
             android:numColumns="2"
             android:verticalSpacing="10dp"
             android:horizontalSpacing="10dp"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"

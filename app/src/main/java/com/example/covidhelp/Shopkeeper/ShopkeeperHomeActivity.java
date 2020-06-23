@@ -1,4 +1,4 @@
-package com.example.covidhelp.Customer;
+package com.example.covidhelp.Shopkeeper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -7,6 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,70 +19,78 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.covidhelp.DataModels.Category;
+import com.example.covidhelp.DataModels.Items;
 import com.example.covidhelp.R;
 import com.example.covidhelp.Utils.categoryAdapter;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
-public class CategoriesActivity extends AppCompatActivity {
-    private GridView categoryGV;
+public class ShopkeeperHomeActivity extends AppCompatActivity {
     private Context mContext;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
-    private TextView shopName;
+    private FrameLayout mFrame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categories);
+        setContentView(R.layout.activity_shopkeeper_home);
         setupWidgets();
-    }
 
-    private void setupGV() {
-        final Category[] categories = {
-                new Category("Grocery & Staples", R.drawable.groceries_stock),
-                new Category("Vegetables & Fruits", R.drawable.groceries_stock),
-                new Category("Personal Care", R.drawable.groceries_stock),
-                new Category("Household Items", R.drawable.groceries_stock),
-                new Category("Home & Kitchen", R.drawable.groceries_stock),
-                new Category("Biscuits, Snacks & Chocolates", R.drawable.groceries_stock),
-                new Category("Beverages", R.drawable.groceries_stock),
-                new Category("Breakfast & Dairy", R.drawable.groceries_stock),
-                new Category("Baby Care", R.drawable.groceries_stock)
+        if (mFrame != null) {
 
-        };
-        categoryAdapter categoryAdapter = new categoryAdapter(this, categories);
-        categoryGV.setAdapter(categoryAdapter);
-        categoryGV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(mContext, categories[i].getCategory(), Toast.LENGTH_SHORT).show();
+            // However, if we're being restored from a previous state,
+            // then we don't need to do anything and should return or else
+            // we could end up with overlapping fragments.
+            if (savedInstanceState != null) {
+                return;
             }
-        });
-    }
+
+            Items[] items = {
+                    new Items("item1", 100),
+                    new Items("item2", 200),
+                    new Items("item3", 300),
+                    new Items("item4", 400),
+                    new Items("item5", 500)
+            };
+
+            // Create a new Fragment to be placed in the activity layout
+            OrderFragment firstFragment = OrderFragment.newInstance("Customer1", items);
+
+            // In case this activity was started with special instructions from an
+            // Intent, pass the Intent's extras to the fragment as arguments
+
+            // Add the fragment to the 'fragment_container' FrameLayout
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_fl, firstFragment).commit();
+
+        }
+
+        }
+
 
     private void setupWidgets(){
-        categoryGV = (GridView) findViewById(R.id.cat_gv);
         mContext = this;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_home);
         setSupportActionBar(toolbar);
 
-        drawerLayout = findViewById(R.id.cat_drawer);
+        drawerLayout = findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        Intent intent = getIntent();
-        shopName = (TextView) findViewById(R.id.shop_name_TV);
-        shopName.setText(intent.getStringExtra("shop"));
+        mFrame = (FrameLayout) findViewById(R.id.fragment_fl);
 
-        setupGV();
     }
+
+
 
 
     @Override

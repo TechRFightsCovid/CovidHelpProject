@@ -13,6 +13,13 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.covidhelp.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.covidhelp.DataModels.Items;
+import com.example.covidhelp.R;
+import com.example.covidhelp.Utils.itemsAdapter;
 import com.paytm.pgsdk.PaytmOrder;
 import com.paytm.pgsdk.PaytmPaymentTransactionCallback;
 import com.paytm.pgsdk.TransactionManager;
@@ -22,6 +29,9 @@ import java.util.Calendar;
 import java.util.Random;
 
 import okhttp3.RequestBody;
+
+import java.util.HashMap;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -199,7 +209,7 @@ public class CartActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         RecyclerView rv = findViewById(R.id.checkoutList);
         rv.setLayoutManager(layoutManager);
-        RecyclerView.Adapter adapter = new checkoutAdapter(items);
+        RecyclerView.Adapter adapter = new itemsAdapter(this, items);
         rv.setAdapter(adapter);
-    }*/
     }
+}
