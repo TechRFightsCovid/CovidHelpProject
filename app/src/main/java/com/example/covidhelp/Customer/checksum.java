@@ -23,9 +23,9 @@ import java.util.HashMap;
 import java.util.Objects;
 
 
-public class checksum extends AppCompatActivity implements PaytmPaymentTransactionCallback {
-    String custid = "", orderId = "", mid = "";
-
+public class checksum{}// extends AppCompatActivity implements PaytmPaymentTransactionCallback {}
+ //   String custid = "", orderId = "", mid = "";
+/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +85,7 @@ public class checksum extends AppCompatActivity implements PaytmPaymentTransacti
             if (dialog.isShowing()) {
                 dialog.dismiss();
             }
-            PaytmPGService Service = PaytmPGService.getStagingService();
+            //PaytmPGService Service = PaytmPGService.getStagingService();
 
             // when app is ready to publish use production service
             // PaytmPGService  Service = PaytmPGService.getProductionService();
@@ -104,10 +104,10 @@ public class checksum extends AppCompatActivity implements PaytmPaymentTransacti
             paramMap.put("INDUSTRY_TYPE_ID", "Retail");
             PaytmOrder Order = new PaytmOrder(paramMap);
             Log.e("checksum ", "param " + paramMap.toString());
-            Service.initialize(Order, null);
+            //Service.initialize(Order, null);
             // start payment service call here
-            Service.startPaymentTransaction(checksum.this, true, true,
-                    checksum.this);
+            //Service.startPaymentTransaction(checksum.this, true, true,
+                    //checksum.this);
         }
     }
 
@@ -145,4 +145,4 @@ public class checksum extends AppCompatActivity implements PaytmPaymentTransacti
     public void onTransactionCancel(String inErrorMessage, Bundle inResponse) {
         Toast.makeText(this, inErrorMessage + inResponse.toString(), Toast.LENGTH_LONG).show();
     }
-}
+*/

@@ -17,6 +17,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
@@ -28,6 +29,11 @@ import com.example.covidhelp.DataModels.Category;
 import com.example.covidhelp.DataModels.Items;
 import com.example.covidhelp.R;
 import com.example.covidhelp.Utils.categoryAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -37,7 +43,7 @@ public class ShopkeeperHomeActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
     private FrameLayout mFrame;
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +66,22 @@ public class ShopkeeperHomeActivity extends AppCompatActivity {
                     new Items("item4", 400),
                     new Items("item5", 500)
             };
+
+            db.collection("users")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    int qty = Integer.parseInt(String.valueOf(document.getData()));
+                                    new Items(document.getId(),qty);
+                                }
+                            } else {
+                                //Log.w(TAG, "Error getting documents.", task.getException());
+                            }
+                        }
+                    });
 
             // Create a new Fragment to be placed in the activity layout
             OrderFragment firstFragment = OrderFragment.newInstance("Customer1", items);

@@ -17,12 +17,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.covidhelp.DataModels.Items;
+//import com.example.covidhelp.DataModels.Items;
 import com.example.covidhelp.R;
-import com.example.covidhelp.Utils.itemsAdapter;
+//import com.example.covidhelp.Utils.itemsAdapter;
 import com.paytm.pgsdk.PaytmOrder;
 import com.paytm.pgsdk.PaytmPaymentTransactionCallback;
-import com.paytm.pgsdk.TransactionManager;
+//import com.paytm.pgsdk.TransactionManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -73,21 +73,21 @@ public class CartActivity extends AppCompatActivity {
                         Toast.makeText(CartActivity.this, errors, Toast.LENGTH_SHORT).show();
 
                     } else {
-                        getToken();
+                       // getToken();
                     }
                 }
             });
         }
-        private void getToken () {
+     /*   private void getToken () {
             Log.e(TAG, " get token start");
             progressBar.setVisibility(View.VISIBLE);
-            Api api = new Api() {
+           Api api = new Api() {
                 @Override
                 public Call<Api> generateTokenCall(String language, String mid, String order_id, String amount) {
                     return null;
                 }
-            };
-            Call<Api> call = api.generateTokenCall("12345", midString, orderIdString, txnAmountString);
+            };*/
+           /* Call<Api> call = api.generateTokenCall("12345", midString, orderIdString, txnAmountString);
             call.enqueue(new Callback<Api>() {
                 @Override
                 public void onResponse(Call<Api> call, Response<Api> response) {
@@ -114,8 +114,8 @@ public class CartActivity extends AppCompatActivity {
                     Log.e(TAG, " response error " + t.toString());
                 }
             });
-        }
-        public void startPaytmPayment (String token){
+        }*/
+       /* public void startPaytmPayment (String token){
             txnTokenString = token;
             // for test mode use it
             // String host = "https://securegw-stage.paytm.in/";
@@ -193,13 +193,13 @@ public class CartActivity extends AppCompatActivity {
  "PAYMENTMODE":"PPI","RESPCODE":"01","RESPMSG":"Txn Success","STATUS":"TXN_SUCCESS",
  "TXNAMOUNT":"2.00","TXNDATE":"2020-06-10 16:57:45.0","TXNID":"2020061011121280011018328631290118"}
   */
-                Toast.makeText(this, data.getStringExtra("nativeSdkForMerchantMessage")
+    /*            Toast.makeText(this, data.getStringExtra("nativeSdkForMerchantMessage")
                         + data.getStringExtra("response"), Toast.LENGTH_SHORT).show();
             } else {
                 Log.e(TAG, " payment failed");
             }
         }
-
+*/
    /* private void setupRecycler() {
 
 
@@ -211,5 +211,5 @@ public class CartActivity extends AppCompatActivity {
         rv.setLayoutManager(layoutManager);
         RecyclerView.Adapter adapter = new itemsAdapter(this, items);
         rv.setAdapter(adapter);
-    }
+    }*/
 }
